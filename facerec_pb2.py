@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rfacerec.proto\x12\x0f\x61veplen.facerec\";\n\x18\x45xtractFFVectorV1Request\x12\x12\n\nbucketname\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\t\")\n\x19\x45xtractFFVectorV1Response\x12\x0c\n\x04\x66\x66vc\x18\x01 \x03(\x01\x32\x7f\n\x0f\x46\x61\x63\x65Recognition\x12l\n\x11\x45xtractFFVectorV1\x12).aveplen.facerec.ExtractFFVectorV1Request\x1a*.aveplen.facerec.ExtractFFVectorV1Response\"\x00\x42\x32Z0github.com/aveplen-bach/face-recognition-serviceb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rfacerec.proto\x12\x0f\x61veplen.facerec\";\n\x18\x45xtractFFVectorV1Request\x12\x12\n\nbucketname\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\t\")\n\x19\x45xtractFFVectorV1Response\x12\x0c\n\x04\x66\x66vc\x18\x01 \x03(\x01\x32\x7f\n\x0f\x46\x61\x63\x65Recognition\x12l\n\x11\x45xtractFFVectorV1\x12).aveplen.facerec.ExtractFFVectorV1Request\x1a*.aveplen.facerec.ExtractFFVectorV1Response\"\x00\x42KZIgithub.com/aveplen-bach/face-recognition-service;face_recognition_serviceb\x06proto3')
 
 
 
@@ -38,7 +38,7 @@ _FACERECOGNITION = DESCRIPTOR.services_by_name['FaceRecognition']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  DESCRIPTOR._serialized_options = b'Z0github.com/aveplen-bach/face-recognition-service'
+  DESCRIPTOR._serialized_options = b'ZIgithub.com/aveplen-bach/face-recognition-service;face_recognition_service'
   _EXTRACTFFVECTORV1REQUEST._serialized_start=34
   _EXTRACTFFVECTORV1REQUEST._serialized_end=93
   _EXTRACTFFVECTORV1RESPONSE._serialized_start=95

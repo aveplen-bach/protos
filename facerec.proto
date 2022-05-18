@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package aveplen.facerec;
-option go_package = "github.com/aveplen-bach/face-recognition-service";
+option go_package = "github.com/aveplen-bach/face-recognition-service;face_recognition_service";
 
 
 service FaceRecognition {

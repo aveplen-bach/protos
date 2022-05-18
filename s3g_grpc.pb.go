@@ -4,7 +4,7 @@
 // - protoc             v3.15.8
 // source: s3g.proto
 
-package s3_grpc_gateway_
+package s3_grpc_gateway
 
 import (
 	context "context"
