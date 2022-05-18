@@ -16,3 +16,4 @@ message ExtractFFVectorV1Request {
 message ExtractFFVectorV1Response {
     repeated double ffvc = 1;
 }
+

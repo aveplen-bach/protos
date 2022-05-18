@@ -75,3 +75,4 @@ message GetObjectResponse {
   string msg = 2;
     string data = 3;  
 }
+
