@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package aveplen.facerec;
+option go_package = "github.com/aveplen-bach/face-recognition-service";
+
+
+service FaceRecognition {
+  rpc ExtractFFVectorV1(ExtractFFVectorV1Request) returns (ExtractFFVectorV1Response) {}
+}
+
+message ExtractFFVectorV1Request {
+    string bucketname = 1;
+    string key = 2;
+}
+
+message ExtractFFVectorV1Response {
+    repeated double ffvc = 1;
+}
