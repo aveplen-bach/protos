@@ -30,3 +30,18 @@ protoc -I=. \
     --python_out s3g \
     --grpc_python_out s3g \
     s3g.proto
+
+rm -rf config
+mkdir config
+
+protoc -I=. \
+    --go_out config \
+    --go_opt paths=source_relative \
+    --go-grpc_out config \
+    --go-grpc_opt paths=source_relative \
+    config.proto
+
+./venv/bin/python -m grpc_tools.protoc -I=.\
+    --python_out config \
+    --grpc_python_out config \
+    config.proto
