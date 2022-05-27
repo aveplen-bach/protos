@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package aveplen.s3file;
+option go_package = "github.com/aveplen-back/s3file";
+
+import "google/protobuf/empty.proto";
+
+service S3Gateway {
+    rpc PutImageObject(ImageObject) returns (google.protobuf.Empty);
+    rpc GetImageObject(GetImageObjectRequest) returns (ImageObject);
+}
+
+message ImageObject {
+    uint64 id = 1;
+    bytes contents = 2;
+}
+
+message GetImageObjectRequest {
+    uint64 id = 1;
+}

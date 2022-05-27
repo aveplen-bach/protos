@@ -45,3 +45,10 @@ protoc -I=. \
     --python_out config \
     --grpc_python_out config \
     config.proto
+
+protoc -I=. \
+    --go_out s3file \
+    --go_opt paths=source_relative \
+    --go-grpc_out s3file \
+    --go-grpc_opt paths=source_relative \
+    s3file.proto
