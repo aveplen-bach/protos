@@ -3,8 +3,6 @@ syntax = "proto3";
 package aveplen.auth;
 option go_package = "github.com/aveplen-back/auth";
 
-import "google/protobuf/empty.proto";
-
 service Authentication {
     rpc GetNextSynPackage(SynPackage) returns (SynPackage);
 }
