@@ -15,6 +15,7 @@ protoc -I=. \
     --grpc_python_out facerec \
     facerec.proto
 
+# ===============================================
 
 rm -rf s3g
 mkdir s3g
@@ -31,6 +32,8 @@ protoc -I=. \
     --grpc_python_out s3g \
     s3g.proto
 
+# ===============================================
+
 rm -rf config
 mkdir config
 
@@ -45,6 +48,20 @@ protoc -I=. \
     --python_out config \
     --grpc_python_out config \
     config.proto
+
+# ===============================================
+
+rm -rf auth
+mkdir auth
+
+protoc -I=. \
+    --go_out auth \
+    --go_opt paths=source_relative \
+    --go-grpc_out auth \
+    --go-grpc_opt paths=source_relative \
+    auth.proto
+
+# ===============================================
 
 rm -rf s3file
 mkdir s3file
