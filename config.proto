@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package aveplen.config;
-option go_package = "github.com/aveplen-bach/config-service;config_service";
+option go_package = "github.com/aveplen-bach/config";
 
 
 service Config {
