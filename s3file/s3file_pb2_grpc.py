@@ -3,7 +3,7 @@
 import grpc
 
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
-import s3file_pb2 as s3file__pb2
+from .import s3file_pb2 as s3file__pb2
 
 
 class S3GatewayStub(object):
