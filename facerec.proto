@@ -5,7 +5,8 @@ option go_package = "github.com/aveplen-bach/facerec";
 
 
 service FaceRecognition {
-  rpc ExtractFFVectorV1(ExtractFFVectorV1Request) returns (ExtractFFVectorV1Response) {}
+  rpc ExtractFFVectorV1(ExtractFFVectorV1Request) returns (ExtractFFVectorV1Response);
+  rpc FFVectorDistance(FFVectorDistanceRequest) returns (FFVectorDistanceResponse);
 }
 
 message ExtractFFVectorV1Request {
@@ -16,3 +17,11 @@ message ExtractFFVectorV1Response {
     repeated double ffvc = 1;
 }
 
+message FFVectorDistanceRequest {
+  repeated double ffvca = 1;
+  repeated double ffvcb = 2;
+}
+
+message FFVectorDistanceResponse {
+  double distance = 1;
+}
