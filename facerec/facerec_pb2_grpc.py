@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import facerec_pb2 as facerec__pb2
+from . import facerec_pb2 as facerec__pb2
 
 
 class FaceRecognitionStub(object):
@@ -19,12 +19,23 @@ class FaceRecognitionStub(object):
                 request_serializer=facerec__pb2.ExtractFFVectorV1Request.SerializeToString,
                 response_deserializer=facerec__pb2.ExtractFFVectorV1Response.FromString,
                 )
+        self.FFVectorDistance = channel.unary_unary(
+                '/aveplen.facerec.FaceRecognition/FFVectorDistance',
+                request_serializer=facerec__pb2.FFVectorDistanceRequest.SerializeToString,
+                response_deserializer=facerec__pb2.FFVectorDistanceResponse.FromString,
+                )
 
 
 class FaceRecognitionServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def ExtractFFVectorV1(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def FFVectorDistance(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -37,6 +48,11 @@ def add_FaceRecognitionServicer_to_server(servicer, server):
                     servicer.ExtractFFVectorV1,
                     request_deserializer=facerec__pb2.ExtractFFVectorV1Request.FromString,
                     response_serializer=facerec__pb2.ExtractFFVectorV1Response.SerializeToString,
+            ),
+            'FFVectorDistance': grpc.unary_unary_rpc_method_handler(
+                    servicer.FFVectorDistance,
+                    request_deserializer=facerec__pb2.FFVectorDistanceRequest.FromString,
+                    response_serializer=facerec__pb2.FFVectorDistanceResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -62,5 +78,22 @@ class FaceRecognition(object):
         return grpc.experimental.unary_unary(request, target, '/aveplen.facerec.FaceRecognition/ExtractFFVectorV1',
             facerec__pb2.ExtractFFVectorV1Request.SerializeToString,
             facerec__pb2.ExtractFFVectorV1Response.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def FFVectorDistance(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/aveplen.facerec.FaceRecognition/FFVectorDistance',
+            facerec__pb2.FFVectorDistanceRequest.SerializeToString,
+            facerec__pb2.FFVectorDistanceResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

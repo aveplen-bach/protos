@@ -23,6 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type FaceRecognitionClient interface {
 	ExtractFFVectorV1(ctx context.Context, in *ExtractFFVectorV1Request, opts ...grpc.CallOption) (*ExtractFFVectorV1Response, error)
+	FFVectorDistance(ctx context.Context, in *FFVectorDistanceRequest, opts ...grpc.CallOption) (*FFVectorDistanceResponse, error)
 }
 
 type faceRecognitionClient struct {
@@ -42,11 +43,21 @@ func (c *faceRecognitionClient) ExtractFFVectorV1(ctx context.Context, in *Extra
 	return out, nil
 }
 
+func (c *faceRecognitionClient) FFVectorDistance(ctx context.Context, in *FFVectorDistanceRequest, opts ...grpc.CallOption) (*FFVectorDistanceResponse, error) {
+	out := new(FFVectorDistanceResponse)
+	err := c.cc.Invoke(ctx, "/aveplen.facerec.FaceRecognition/FFVectorDistance", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // FaceRecognitionServer is the server API for FaceRecognition service.
 // All implementations must embed UnimplementedFaceRecognitionServer
 // for forward compatibility
 type FaceRecognitionServer interface {
 	ExtractFFVectorV1(context.Context, *ExtractFFVectorV1Request) (*ExtractFFVectorV1Response, error)
+	FFVectorDistance(context.Context, *FFVectorDistanceRequest) (*FFVectorDistanceResponse, error)
 	mustEmbedUnimplementedFaceRecognitionServer()
 }
 
@@ -56,6 +67,9 @@ type UnimplementedFaceRecognitionServer struct {
 
 func (UnimplementedFaceRecognitionServer) ExtractFFVectorV1(context.Context, *ExtractFFVectorV1Request) (*ExtractFFVectorV1Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExtractFFVectorV1 not implemented")
+}
+func (UnimplementedFaceRecognitionServer) FFVectorDistance(context.Context, *FFVectorDistanceRequest) (*FFVectorDistanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FFVectorDistance not implemented")
 }
 func (UnimplementedFaceRecognitionServer) mustEmbedUnimplementedFaceRecognitionServer() {}
 
@@ -88,6 +102,24 @@ func _FaceRecognition_ExtractFFVectorV1_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FaceRecognition_FFVectorDistance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FFVectorDistanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FaceRecognitionServer).FFVectorDistance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/aveplen.facerec.FaceRecognition/FFVectorDistance",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FaceRecognitionServer).FFVectorDistance(ctx, req.(*FFVectorDistanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // FaceRecognition_ServiceDesc is the grpc.ServiceDesc for FaceRecognition service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -98,6 +130,10 @@ var FaceRecognition_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ExtractFFVectorV1",
 			Handler:    _FaceRecognition_ExtractFFVectorV1_Handler,
+		},
+		{
+			MethodName: "FFVectorDistance",
+			Handler:    _FaceRecognition_FFVectorDistance_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
