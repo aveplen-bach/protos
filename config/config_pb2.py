@@ -12,107 +12,28 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0c\x63onfig.proto\x12\x0e\x61veplen.config\"\x05\n\x03\x41\x63k\"*\n\x15\x46\x61\x63\x65RecognitionConfig\x12\x11\n\tthreshold\x18\x01 \x01(\x01\"9\n\x1b\x46\x61\x63\x65RecognitionRegistration\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\"-\n\x0fS3GatewayConfig\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\"3\n\x15S3GatewayRegistration\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\"b\n\x0e\x44\x61tabaseConfig\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\x12\x10\n\x08username\x18\x03 \x01(\t\x12\x10\n\x08password\x18\x04 \x01(\t\x12\x10\n\x08\x64\x61tabase\x18\x05 \x01(\t\"\xde\x01\n\x14\x41uthenticationConfig\x12\x36\n\x0e\x64\x61tabaseConfig\x18\x01 \x01(\x0b\x32\x1e.aveplen.config.DatabaseConfig\x12H\n\x13\x66\x61\x63\x65recRegistration\x18\x02 \x01(\x0b\x32+.aveplen.config.FaceRecognitionRegistration\x12\x44\n\x15s3GatewayRegistration\x18\x03 \x01(\x0b\x32%.aveplen.config.S3GatewayRegistration\"8\n\x1a\x41uthenticationRegistration\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\"^\n\x1a\x41uthenticationClientConfig\x12@\n\x0cregistration\x18\x01 \x01(\x0b\x32*.aveplen.config.AuthenticationRegistration2\x86\x07\n\x06\x43onfig\x12X\n\x18GetFaceRecognitionConfig\x12\x13.aveplen.config.Ack\x1a%.aveplen.config.FaceRecognitionConfig\"\x00\x12[\n\x1bUpdateFaceRecognitionConfig\x12%.aveplen.config.FaceRecognitionConfig\x1a\x13.aveplen.config.Ack\"\x00\x12]\n\x17RegisterFaceRecognition\x12+.aveplen.config.FaceRecognitionRegistration\x1a\x13.aveplen.config.Ack\"\x00\x12L\n\x12GetS3GatewayConfig\x12\x13.aveplen.config.Ack\x1a\x1f.aveplen.config.S3GatewayConfig\"\x00\x12O\n\x15UpdateS3GatewayConfig\x12\x1f.aveplen.config.S3GatewayConfig\x1a\x13.aveplen.config.Ack\"\x00\x12Q\n\x11RegisterS3Gateway\x12%.aveplen.config.S3GatewayRegistration\x1a\x13.aveplen.config.Ack\"\x00\x12V\n\x17GetAuthenticationConfig\x12\x13.aveplen.config.Ack\x1a$.aveplen.config.AuthenticationConfig\"\x00\x12[\n\"UpdateAuthenticationDatabaseConfig\x12\x1e.aveplen.config.DatabaseConfig\x1a\x13.aveplen.config.Ack\"\x00\x12[\n\x16RegisterAuthentication\x12*.aveplen.config.AuthenticationRegistration\x1a\x13.aveplen.config.Ack\"\x00\x12\x62\n\x1dGetAuthenticationClientConfig\x12\x13.aveplen.config.Ack\x1a*.aveplen.config.AuthenticationClientConfig\"\x00\x42 Z\x1egithub.com/aveplen-bach/configb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0c\x63onfig.proto\x12\x0e\x61veplen.config\x1a\x1bgoogle/protobuf/empty.proto\"\"\n\rFacerecConfig\x12\x11\n\tthreshold\x18\x01 \x01(\x01\x32\xa5\x01\n\x06\x43onfig\x12K\n\x10GetFacerecConfig\x12\x16.google.protobuf.Empty\x1a\x1d.aveplen.config.FacerecConfig\"\x00\x12N\n\x13UpdateFacerecConfig\x12\x1d.aveplen.config.FacerecConfig\x1a\x16.google.protobuf.Empty\"\x00\x42 Z\x1egithub.com/aveplen-bach/configb\x06proto3')
 
 
 
-_ACK = DESCRIPTOR.message_types_by_name['Ack']
-_FACERECOGNITIONCONFIG = DESCRIPTOR.message_types_by_name['FaceRecognitionConfig']
-_FACERECOGNITIONREGISTRATION = DESCRIPTOR.message_types_by_name['FaceRecognitionRegistration']
-_S3GATEWAYCONFIG = DESCRIPTOR.message_types_by_name['S3GatewayConfig']
-_S3GATEWAYREGISTRATION = DESCRIPTOR.message_types_by_name['S3GatewayRegistration']
-_DATABASECONFIG = DESCRIPTOR.message_types_by_name['DatabaseConfig']
-_AUTHENTICATIONCONFIG = DESCRIPTOR.message_types_by_name['AuthenticationConfig']
-_AUTHENTICATIONREGISTRATION = DESCRIPTOR.message_types_by_name['AuthenticationRegistration']
-_AUTHENTICATIONCLIENTCONFIG = DESCRIPTOR.message_types_by_name['AuthenticationClientConfig']
-Ack = _reflection.GeneratedProtocolMessageType('Ack', (_message.Message,), {
-  'DESCRIPTOR' : _ACK,
+_FACERECCONFIG = DESCRIPTOR.message_types_by_name['FacerecConfig']
+FacerecConfig = _reflection.GeneratedProtocolMessageType('FacerecConfig', (_message.Message,), {
+  'DESCRIPTOR' : _FACERECCONFIG,
   '__module__' : 'config_pb2'
-  # @@protoc_insertion_point(class_scope:aveplen.config.Ack)
+  # @@protoc_insertion_point(class_scope:aveplen.config.FacerecConfig)
   })
-_sym_db.RegisterMessage(Ack)
-
-FaceRecognitionConfig = _reflection.GeneratedProtocolMessageType('FaceRecognitionConfig', (_message.Message,), {
-  'DESCRIPTOR' : _FACERECOGNITIONCONFIG,
-  '__module__' : 'config_pb2'
-  # @@protoc_insertion_point(class_scope:aveplen.config.FaceRecognitionConfig)
-  })
-_sym_db.RegisterMessage(FaceRecognitionConfig)
-
-FaceRecognitionRegistration = _reflection.GeneratedProtocolMessageType('FaceRecognitionRegistration', (_message.Message,), {
-  'DESCRIPTOR' : _FACERECOGNITIONREGISTRATION,
-  '__module__' : 'config_pb2'
-  # @@protoc_insertion_point(class_scope:aveplen.config.FaceRecognitionRegistration)
-  })
-_sym_db.RegisterMessage(FaceRecognitionRegistration)
-
-S3GatewayConfig = _reflection.GeneratedProtocolMessageType('S3GatewayConfig', (_message.Message,), {
-  'DESCRIPTOR' : _S3GATEWAYCONFIG,
-  '__module__' : 'config_pb2'
-  # @@protoc_insertion_point(class_scope:aveplen.config.S3GatewayConfig)
-  })
-_sym_db.RegisterMessage(S3GatewayConfig)
-
-S3GatewayRegistration = _reflection.GeneratedProtocolMessageType('S3GatewayRegistration', (_message.Message,), {
-  'DESCRIPTOR' : _S3GATEWAYREGISTRATION,
-  '__module__' : 'config_pb2'
-  # @@protoc_insertion_point(class_scope:aveplen.config.S3GatewayRegistration)
-  })
-_sym_db.RegisterMessage(S3GatewayRegistration)
-
-DatabaseConfig = _reflection.GeneratedProtocolMessageType('DatabaseConfig', (_message.Message,), {
-  'DESCRIPTOR' : _DATABASECONFIG,
-  '__module__' : 'config_pb2'
-  # @@protoc_insertion_point(class_scope:aveplen.config.DatabaseConfig)
-  })
-_sym_db.RegisterMessage(DatabaseConfig)
-
-AuthenticationConfig = _reflection.GeneratedProtocolMessageType('AuthenticationConfig', (_message.Message,), {
-  'DESCRIPTOR' : _AUTHENTICATIONCONFIG,
-  '__module__' : 'config_pb2'
-  # @@protoc_insertion_point(class_scope:aveplen.config.AuthenticationConfig)
-  })
-_sym_db.RegisterMessage(AuthenticationConfig)
-
-AuthenticationRegistration = _reflection.GeneratedProtocolMessageType('AuthenticationRegistration', (_message.Message,), {
-  'DESCRIPTOR' : _AUTHENTICATIONREGISTRATION,
-  '__module__' : 'config_pb2'
-  # @@protoc_insertion_point(class_scope:aveplen.config.AuthenticationRegistration)
-  })
-_sym_db.RegisterMessage(AuthenticationRegistration)
-
-AuthenticationClientConfig = _reflection.GeneratedProtocolMessageType('AuthenticationClientConfig', (_message.Message,), {
-  'DESCRIPTOR' : _AUTHENTICATIONCLIENTCONFIG,
-  '__module__' : 'config_pb2'
-  # @@protoc_insertion_point(class_scope:aveplen.config.AuthenticationClientConfig)
-  })
-_sym_db.RegisterMessage(AuthenticationClientConfig)
+_sym_db.RegisterMessage(FacerecConfig)
 
 _CONFIG = DESCRIPTOR.services_by_name['Config']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'Z\036github.com/aveplen-bach/config'
-  _ACK._serialized_start=32
-  _ACK._serialized_end=37
-  _FACERECOGNITIONCONFIG._serialized_start=39
-  _FACERECOGNITIONCONFIG._serialized_end=81
-  _FACERECOGNITIONREGISTRATION._serialized_start=83
-  _FACERECOGNITIONREGISTRATION._serialized_end=140
-  _S3GATEWAYCONFIG._serialized_start=142
-  _S3GATEWAYCONFIG._serialized_end=187
-  _S3GATEWAYREGISTRATION._serialized_start=189
-  _S3GATEWAYREGISTRATION._serialized_end=240
-  _DATABASECONFIG._serialized_start=242
-  _DATABASECONFIG._serialized_end=340
-  _AUTHENTICATIONCONFIG._serialized_start=343
-  _AUTHENTICATIONCONFIG._serialized_end=565
-  _AUTHENTICATIONREGISTRATION._serialized_start=567
-  _AUTHENTICATIONREGISTRATION._serialized_end=623
-  _AUTHENTICATIONCLIENTCONFIG._serialized_start=625
-  _AUTHENTICATIONCLIENTCONFIG._serialized_end=719
-  _CONFIG._serialized_start=722
-  _CONFIG._serialized_end=1624
+  _FACERECCONFIG._serialized_start=61
+  _FACERECCONFIG._serialized_end=95
+  _CONFIG._serialized_start=98
+  _CONFIG._serialized_end=263
 # @@protoc_insertion_point(module_scope)

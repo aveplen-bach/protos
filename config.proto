@@ -1,70 +1,15 @@
 syntax = "proto3";
 
 package aveplen.config;
+import "google/protobuf/empty.proto";
 option go_package = "github.com/aveplen-bach/config";
 
 
 service Config {
-  rpc GetFaceRecognitionConfig(Ack) returns (FaceRecognitionConfig) {}
-  rpc UpdateFaceRecognitionConfig(FaceRecognitionConfig) returns (Ack) {}
-  rpc RegisterFaceRecognition(FaceRecognitionRegistration) returns (Ack) {}
-
-  rpc GetS3GatewayConfig(Ack) returns (S3GatewayConfig) {}
-  rpc UpdateS3GatewayConfig(S3GatewayConfig) returns (Ack) {}
-  rpc RegisterS3Gateway(S3GatewayRegistration) returns (Ack) {}
-
-  rpc GetAuthenticationConfig(Ack) returns (AuthenticationConfig) {}
-  rpc UpdateAuthenticationDatabaseConfig(DatabaseConfig) returns (Ack) {}
-  rpc RegisterAuthentication(AuthenticationRegistration) returns (Ack) {}
-
-  rpc GetAuthenticationClientConfig(Ack) returns (AuthenticationClientConfig) {}
+  rpc GetFacerecConfig(google.protobuf.Empty) returns (FacerecConfig) {}
+  rpc UpdateFacerecConfig(FacerecConfig) returns (google.protobuf.Empty) {}
 }
 
-// ================================= utiltity =================================
-message Ack {}
-
-// ================================== facerec =================================
-message FaceRecognitionConfig {
+message FacerecConfig {
   double threshold = 1;
-}
-
-message FaceRecognitionRegistration {
-  string host = 1;
-  int32 port = 2;
-}
-
-// ================================ s3 gateway ================================
-message S3GatewayConfig {
-  string host = 1;
-  int32 port = 2;
-}
-
-message S3GatewayRegistration {
-  string host = 1;
-  int32 port = 2;
-}
-
-// =================================== auth ===================================
-message DatabaseConfig {
-  string host = 1;
-  int32 port = 2;
-  string username = 3;
-  string password = 4;
-  string database = 5;
-}
-
-message AuthenticationConfig {
-  DatabaseConfig databaseConfig = 1;
-  FaceRecognitionRegistration facerecRegistration  = 2;
-  S3GatewayRegistration s3GatewayRegistration = 3;
-}
-
-message AuthenticationRegistration {
-  string host = 1;
-  int32 port = 2;
-}
-
-// =================================== auth ===================================
-message AuthenticationClientConfig {
-  AuthenticationRegistration registration = 1;
 }

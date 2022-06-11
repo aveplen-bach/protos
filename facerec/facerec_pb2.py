@@ -14,12 +14,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rfacerec.proto\x12\x0f\x61veplen.facerec\"&\n\x18\x45xtractFFVectorV1Request\x12\n\n\x02id\x18\x01 \x01(\x04\")\n\x19\x45xtractFFVectorV1Response\x12\x0c\n\x04\x66\x66vc\x18\x01 \x03(\x01\x32\x7f\n\x0f\x46\x61\x63\x65Recognition\x12l\n\x11\x45xtractFFVectorV1\x12).aveplen.facerec.ExtractFFVectorV1Request\x1a*.aveplen.facerec.ExtractFFVectorV1Response\"\x00\x42!Z\x1fgithub.com/aveplen-bach/facerecb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rfacerec.proto\x12\x0f\x61veplen.facerec\"&\n\x18\x45xtractFFVectorV1Request\x12\n\n\x02id\x18\x01 \x01(\x04\")\n\x19\x45xtractFFVectorV1Response\x12\x0c\n\x04\x66\x66vc\x18\x01 \x03(\x01\"7\n\x17\x46\x46VectorDistanceRequest\x12\r\n\x05\x66\x66vca\x18\x01 \x03(\x01\x12\r\n\x05\x66\x66vcb\x18\x02 \x03(\x01\",\n\x18\x46\x46VectorDistanceResponse\x12\x10\n\x08\x64istance\x18\x01 \x01(\x01\x32\xe6\x01\n\x0f\x46\x61\x63\x65Recognition\x12j\n\x11\x45xtractFFVectorV1\x12).aveplen.facerec.ExtractFFVectorV1Request\x1a*.aveplen.facerec.ExtractFFVectorV1Response\x12g\n\x10\x46\x46VectorDistance\x12(.aveplen.facerec.FFVectorDistanceRequest\x1a).aveplen.facerec.FFVectorDistanceResponseB!Z\x1fgithub.com/aveplen-bach/facerecb\x06proto3')
 
 
 
 _EXTRACTFFVECTORV1REQUEST = DESCRIPTOR.message_types_by_name['ExtractFFVectorV1Request']
 _EXTRACTFFVECTORV1RESPONSE = DESCRIPTOR.message_types_by_name['ExtractFFVectorV1Response']
+_FFVECTORDISTANCEREQUEST = DESCRIPTOR.message_types_by_name['FFVectorDistanceRequest']
+_FFVECTORDISTANCERESPONSE = DESCRIPTOR.message_types_by_name['FFVectorDistanceResponse']
 ExtractFFVectorV1Request = _reflection.GeneratedProtocolMessageType('ExtractFFVectorV1Request', (_message.Message,), {
   'DESCRIPTOR' : _EXTRACTFFVECTORV1REQUEST,
   '__module__' : 'facerec_pb2'
@@ -34,6 +36,20 @@ ExtractFFVectorV1Response = _reflection.GeneratedProtocolMessageType('ExtractFFV
   })
 _sym_db.RegisterMessage(ExtractFFVectorV1Response)
 
+FFVectorDistanceRequest = _reflection.GeneratedProtocolMessageType('FFVectorDistanceRequest', (_message.Message,), {
+  'DESCRIPTOR' : _FFVECTORDISTANCEREQUEST,
+  '__module__' : 'facerec_pb2'
+  # @@protoc_insertion_point(class_scope:aveplen.facerec.FFVectorDistanceRequest)
+  })
+_sym_db.RegisterMessage(FFVectorDistanceRequest)
+
+FFVectorDistanceResponse = _reflection.GeneratedProtocolMessageType('FFVectorDistanceResponse', (_message.Message,), {
+  'DESCRIPTOR' : _FFVECTORDISTANCERESPONSE,
+  '__module__' : 'facerec_pb2'
+  # @@protoc_insertion_point(class_scope:aveplen.facerec.FFVectorDistanceResponse)
+  })
+_sym_db.RegisterMessage(FFVectorDistanceResponse)
+
 _FACERECOGNITION = DESCRIPTOR.services_by_name['FaceRecognition']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
@@ -43,6 +59,10 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _EXTRACTFFVECTORV1REQUEST._serialized_end=72
   _EXTRACTFFVECTORV1RESPONSE._serialized_start=74
   _EXTRACTFFVECTORV1RESPONSE._serialized_end=115
-  _FACERECOGNITION._serialized_start=117
-  _FACERECOGNITION._serialized_end=244
+  _FFVECTORDISTANCEREQUEST._serialized_start=117
+  _FFVECTORDISTANCEREQUEST._serialized_end=172
+  _FFVECTORDISTANCERESPONSE._serialized_start=174
+  _FFVECTORDISTANCERESPONSE._serialized_end=218
+  _FACERECOGNITION._serialized_start=221
+  _FACERECOGNITION._serialized_end=451
 # @@protoc_insertion_point(module_scope)

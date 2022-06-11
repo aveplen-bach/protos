@@ -3,6 +3,7 @@
 import grpc
 
 import config_pb2 as config__pb2
+from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
 class ConfigStub(object):
@@ -14,116 +15,28 @@ class ConfigStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.GetFaceRecognitionConfig = channel.unary_unary(
-                '/aveplen.config.Config/GetFaceRecognitionConfig',
-                request_serializer=config__pb2.Ack.SerializeToString,
-                response_deserializer=config__pb2.FaceRecognitionConfig.FromString,
+        self.GetFacerecConfig = channel.unary_unary(
+                '/aveplen.config.Config/GetFacerecConfig',
+                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+                response_deserializer=config__pb2.FacerecConfig.FromString,
                 )
-        self.UpdateFaceRecognitionConfig = channel.unary_unary(
-                '/aveplen.config.Config/UpdateFaceRecognitionConfig',
-                request_serializer=config__pb2.FaceRecognitionConfig.SerializeToString,
-                response_deserializer=config__pb2.Ack.FromString,
-                )
-        self.RegisterFaceRecognition = channel.unary_unary(
-                '/aveplen.config.Config/RegisterFaceRecognition',
-                request_serializer=config__pb2.FaceRecognitionRegistration.SerializeToString,
-                response_deserializer=config__pb2.Ack.FromString,
-                )
-        self.GetS3GatewayConfig = channel.unary_unary(
-                '/aveplen.config.Config/GetS3GatewayConfig',
-                request_serializer=config__pb2.Ack.SerializeToString,
-                response_deserializer=config__pb2.S3GatewayConfig.FromString,
-                )
-        self.UpdateS3GatewayConfig = channel.unary_unary(
-                '/aveplen.config.Config/UpdateS3GatewayConfig',
-                request_serializer=config__pb2.S3GatewayConfig.SerializeToString,
-                response_deserializer=config__pb2.Ack.FromString,
-                )
-        self.RegisterS3Gateway = channel.unary_unary(
-                '/aveplen.config.Config/RegisterS3Gateway',
-                request_serializer=config__pb2.S3GatewayRegistration.SerializeToString,
-                response_deserializer=config__pb2.Ack.FromString,
-                )
-        self.GetAuthenticationConfig = channel.unary_unary(
-                '/aveplen.config.Config/GetAuthenticationConfig',
-                request_serializer=config__pb2.Ack.SerializeToString,
-                response_deserializer=config__pb2.AuthenticationConfig.FromString,
-                )
-        self.UpdateAuthenticationDatabaseConfig = channel.unary_unary(
-                '/aveplen.config.Config/UpdateAuthenticationDatabaseConfig',
-                request_serializer=config__pb2.DatabaseConfig.SerializeToString,
-                response_deserializer=config__pb2.Ack.FromString,
-                )
-        self.RegisterAuthentication = channel.unary_unary(
-                '/aveplen.config.Config/RegisterAuthentication',
-                request_serializer=config__pb2.AuthenticationRegistration.SerializeToString,
-                response_deserializer=config__pb2.Ack.FromString,
-                )
-        self.GetAuthenticationClientConfig = channel.unary_unary(
-                '/aveplen.config.Config/GetAuthenticationClientConfig',
-                request_serializer=config__pb2.Ack.SerializeToString,
-                response_deserializer=config__pb2.AuthenticationClientConfig.FromString,
+        self.UpdateFacerecConfig = channel.unary_unary(
+                '/aveplen.config.Config/UpdateFacerecConfig',
+                request_serializer=config__pb2.FacerecConfig.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
 
 
 class ConfigServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def GetFaceRecognitionConfig(self, request, context):
+    def GetFacerecConfig(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def UpdateFaceRecognitionConfig(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def RegisterFaceRecognition(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetS3GatewayConfig(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def UpdateS3GatewayConfig(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def RegisterS3Gateway(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetAuthenticationConfig(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def UpdateAuthenticationDatabaseConfig(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def RegisterAuthentication(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetAuthenticationClientConfig(self, request, context):
+    def UpdateFacerecConfig(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -132,55 +45,15 @@ class ConfigServicer(object):
 
 def add_ConfigServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetFaceRecognitionConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetFaceRecognitionConfig,
-                    request_deserializer=config__pb2.Ack.FromString,
-                    response_serializer=config__pb2.FaceRecognitionConfig.SerializeToString,
+            'GetFacerecConfig': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetFacerecConfig,
+                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                    response_serializer=config__pb2.FacerecConfig.SerializeToString,
             ),
-            'UpdateFaceRecognitionConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.UpdateFaceRecognitionConfig,
-                    request_deserializer=config__pb2.FaceRecognitionConfig.FromString,
-                    response_serializer=config__pb2.Ack.SerializeToString,
-            ),
-            'RegisterFaceRecognition': grpc.unary_unary_rpc_method_handler(
-                    servicer.RegisterFaceRecognition,
-                    request_deserializer=config__pb2.FaceRecognitionRegistration.FromString,
-                    response_serializer=config__pb2.Ack.SerializeToString,
-            ),
-            'GetS3GatewayConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetS3GatewayConfig,
-                    request_deserializer=config__pb2.Ack.FromString,
-                    response_serializer=config__pb2.S3GatewayConfig.SerializeToString,
-            ),
-            'UpdateS3GatewayConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.UpdateS3GatewayConfig,
-                    request_deserializer=config__pb2.S3GatewayConfig.FromString,
-                    response_serializer=config__pb2.Ack.SerializeToString,
-            ),
-            'RegisterS3Gateway': grpc.unary_unary_rpc_method_handler(
-                    servicer.RegisterS3Gateway,
-                    request_deserializer=config__pb2.S3GatewayRegistration.FromString,
-                    response_serializer=config__pb2.Ack.SerializeToString,
-            ),
-            'GetAuthenticationConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetAuthenticationConfig,
-                    request_deserializer=config__pb2.Ack.FromString,
-                    response_serializer=config__pb2.AuthenticationConfig.SerializeToString,
-            ),
-            'UpdateAuthenticationDatabaseConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.UpdateAuthenticationDatabaseConfig,
-                    request_deserializer=config__pb2.DatabaseConfig.FromString,
-                    response_serializer=config__pb2.Ack.SerializeToString,
-            ),
-            'RegisterAuthentication': grpc.unary_unary_rpc_method_handler(
-                    servicer.RegisterAuthentication,
-                    request_deserializer=config__pb2.AuthenticationRegistration.FromString,
-                    response_serializer=config__pb2.Ack.SerializeToString,
-            ),
-            'GetAuthenticationClientConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetAuthenticationClientConfig,
-                    request_deserializer=config__pb2.Ack.FromString,
-                    response_serializer=config__pb2.AuthenticationClientConfig.SerializeToString,
+            'UpdateFacerecConfig': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateFacerecConfig,
+                    request_deserializer=config__pb2.FacerecConfig.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -193,7 +66,7 @@ class Config(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def GetFaceRecognitionConfig(request,
+    def GetFacerecConfig(request,
             target,
             options=(),
             channel_credentials=None,
@@ -203,14 +76,14 @@ class Config(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/aveplen.config.Config/GetFaceRecognitionConfig',
-            config__pb2.Ack.SerializeToString,
-            config__pb2.FaceRecognitionConfig.FromString,
+        return grpc.experimental.unary_unary(request, target, '/aveplen.config.Config/GetFacerecConfig',
+            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            config__pb2.FacerecConfig.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def UpdateFaceRecognitionConfig(request,
+    def UpdateFacerecConfig(request,
             target,
             options=(),
             channel_credentials=None,
@@ -220,144 +93,8 @@ class Config(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/aveplen.config.Config/UpdateFaceRecognitionConfig',
-            config__pb2.FaceRecognitionConfig.SerializeToString,
-            config__pb2.Ack.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def RegisterFaceRecognition(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/aveplen.config.Config/RegisterFaceRecognition',
-            config__pb2.FaceRecognitionRegistration.SerializeToString,
-            config__pb2.Ack.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def GetS3GatewayConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/aveplen.config.Config/GetS3GatewayConfig',
-            config__pb2.Ack.SerializeToString,
-            config__pb2.S3GatewayConfig.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def UpdateS3GatewayConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/aveplen.config.Config/UpdateS3GatewayConfig',
-            config__pb2.S3GatewayConfig.SerializeToString,
-            config__pb2.Ack.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def RegisterS3Gateway(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/aveplen.config.Config/RegisterS3Gateway',
-            config__pb2.S3GatewayRegistration.SerializeToString,
-            config__pb2.Ack.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def GetAuthenticationConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/aveplen.config.Config/GetAuthenticationConfig',
-            config__pb2.Ack.SerializeToString,
-            config__pb2.AuthenticationConfig.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def UpdateAuthenticationDatabaseConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/aveplen.config.Config/UpdateAuthenticationDatabaseConfig',
-            config__pb2.DatabaseConfig.SerializeToString,
-            config__pb2.Ack.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def RegisterAuthentication(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/aveplen.config.Config/RegisterAuthentication',
-            config__pb2.AuthenticationRegistration.SerializeToString,
-            config__pb2.Ack.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def GetAuthenticationClientConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/aveplen.config.Config/GetAuthenticationClientConfig',
-            config__pb2.Ack.SerializeToString,
-            config__pb2.AuthenticationClientConfig.FromString,
+        return grpc.experimental.unary_unary(request, target, '/aveplen.config.Config/UpdateFacerecConfig',
+            config__pb2.FacerecConfig.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
