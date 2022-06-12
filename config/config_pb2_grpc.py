@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import config_pb2 as config__pb2
+from . import config_pb2 as config__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
@@ -16,15 +16,15 @@ class ConfigStub(object):
             channel: A grpc.Channel.
         """
         self.GetFacerecConfig = channel.unary_unary(
-                '/aveplen.config.Config/GetFacerecConfig',
-                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-                response_deserializer=config__pb2.FacerecConfig.FromString,
-                )
+            '/aveplen.config.Config/GetFacerecConfig',
+            request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            response_deserializer=config__pb2.FacerecConfig.FromString,
+        )
         self.UpdateFacerecConfig = channel.unary_unary(
-                '/aveplen.config.Config/UpdateFacerecConfig',
-                request_serializer=config__pb2.FacerecConfig.SerializeToString,
-                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                )
+            '/aveplen.config.Config/UpdateFacerecConfig',
+            request_serializer=config__pb2.FacerecConfig.SerializeToString,
+            response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+        )
 
 
 class ConfigServicer(object):
@@ -45,56 +45,57 @@ class ConfigServicer(object):
 
 def add_ConfigServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetFacerecConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetFacerecConfig,
-                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                    response_serializer=config__pb2.FacerecConfig.SerializeToString,
-            ),
-            'UpdateFacerecConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.UpdateFacerecConfig,
-                    request_deserializer=config__pb2.FacerecConfig.FromString,
-                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            ),
+        'GetFacerecConfig': grpc.unary_unary_rpc_method_handler(
+            servicer.GetFacerecConfig,
+            request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+            response_serializer=config__pb2.FacerecConfig.SerializeToString,
+        ),
+        'UpdateFacerecConfig': grpc.unary_unary_rpc_method_handler(
+            servicer.UpdateFacerecConfig,
+            request_deserializer=config__pb2.FacerecConfig.FromString,
+            response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'aveplen.config.Config', rpc_method_handlers)
+        'aveplen.config.Config', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
-
  # This class is part of an EXPERIMENTAL API.
+
+
 class Config(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def GetFacerecConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                         target,
+                         options=(),
+                         channel_credentials=None,
+                         call_credentials=None,
+                         insecure=False,
+                         compression=None,
+                         wait_for_ready=None,
+                         timeout=None,
+                         metadata=None):
         return grpc.experimental.unary_unary(request, target, '/aveplen.config.Config/GetFacerecConfig',
-            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            config__pb2.FacerecConfig.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+                                             config__pb2.FacerecConfig.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def UpdateFacerecConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                            target,
+                            options=(),
+                            channel_credentials=None,
+                            call_credentials=None,
+                            insecure=False,
+                            compression=None,
+                            wait_for_ready=None,
+                            timeout=None,
+                            metadata=None):
         return grpc.experimental.unary_unary(request, target, '/aveplen.config.Config/UpdateFacerecConfig',
-            config__pb2.FacerecConfig.SerializeToString,
-            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.FacerecConfig.SerializeToString,
+                                             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

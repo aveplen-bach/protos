@@ -3,7 +3,7 @@
 import grpc
 
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
-import s3file_pb2 as s3file__pb2
+from . import s3file_pb2 as s3file__pb2
 
 
 class S3GatewayStub(object):
@@ -16,15 +16,15 @@ class S3GatewayStub(object):
             channel: A grpc.Channel.
         """
         self.PutImageObject = channel.unary_unary(
-                '/aveplen.s3file.S3Gateway/PutImageObject',
-                request_serializer=s3file__pb2.ImageObject.SerializeToString,
-                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                )
+            '/aveplen.s3file.S3Gateway/PutImageObject',
+            request_serializer=s3file__pb2.ImageObject.SerializeToString,
+            response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+        )
         self.GetImageObject = channel.unary_unary(
-                '/aveplen.s3file.S3Gateway/GetImageObject',
-                request_serializer=s3file__pb2.GetImageObjectRequest.SerializeToString,
-                response_deserializer=s3file__pb2.ImageObject.FromString,
-                )
+            '/aveplen.s3file.S3Gateway/GetImageObject',
+            request_serializer=s3file__pb2.GetImageObjectRequest.SerializeToString,
+            response_deserializer=s3file__pb2.ImageObject.FromString,
+        )
 
 
 class S3GatewayServicer(object):
@@ -45,56 +45,57 @@ class S3GatewayServicer(object):
 
 def add_S3GatewayServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'PutImageObject': grpc.unary_unary_rpc_method_handler(
-                    servicer.PutImageObject,
-                    request_deserializer=s3file__pb2.ImageObject.FromString,
-                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            ),
-            'GetImageObject': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetImageObject,
-                    request_deserializer=s3file__pb2.GetImageObjectRequest.FromString,
-                    response_serializer=s3file__pb2.ImageObject.SerializeToString,
-            ),
+        'PutImageObject': grpc.unary_unary_rpc_method_handler(
+            servicer.PutImageObject,
+            request_deserializer=s3file__pb2.ImageObject.FromString,
+            response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+        ),
+        'GetImageObject': grpc.unary_unary_rpc_method_handler(
+            servicer.GetImageObject,
+            request_deserializer=s3file__pb2.GetImageObjectRequest.FromString,
+            response_serializer=s3file__pb2.ImageObject.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'aveplen.s3file.S3Gateway', rpc_method_handlers)
+        'aveplen.s3file.S3Gateway', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
-
  # This class is part of an EXPERIMENTAL API.
+
+
 class S3Gateway(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def PutImageObject(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                       target,
+                       options=(),
+                       channel_credentials=None,
+                       call_credentials=None,
+                       insecure=False,
+                       compression=None,
+                       wait_for_ready=None,
+                       timeout=None,
+                       metadata=None):
         return grpc.experimental.unary_unary(request, target, '/aveplen.s3file.S3Gateway/PutImageObject',
-            s3file__pb2.ImageObject.SerializeToString,
-            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             s3file__pb2.ImageObject.SerializeToString,
+                                             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def GetImageObject(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                       target,
+                       options=(),
+                       channel_credentials=None,
+                       call_credentials=None,
+                       insecure=False,
+                       compression=None,
+                       wait_for_ready=None,
+                       timeout=None,
+                       metadata=None):
         return grpc.experimental.unary_unary(request, target, '/aveplen.s3file.S3Gateway/GetImageObject',
-            s3file__pb2.GetImageObjectRequest.SerializeToString,
-            s3file__pb2.ImageObject.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             s3file__pb2.GetImageObjectRequest.SerializeToString,
+                                             s3file__pb2.ImageObject.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
