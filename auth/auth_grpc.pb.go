@@ -23,6 +23,8 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthenticationClient interface {
 	GetNextSynPackage(ctx context.Context, in *SynPackage, opts ...grpc.CallOption) (*SynPackage, error)
+	Decrypt(ctx context.Context, in *Ciphertext, opts ...grpc.CallOption) (*Opentext, error)
+	Encrypt(ctx context.Context, in *Opentext, opts ...grpc.CallOption) (*Ciphertext, error)
 }
 
 type authenticationClient struct {
@@ -42,11 +44,31 @@ func (c *authenticationClient) GetNextSynPackage(ctx context.Context, in *SynPac
 	return out, nil
 }
 
+func (c *authenticationClient) Decrypt(ctx context.Context, in *Ciphertext, opts ...grpc.CallOption) (*Opentext, error) {
+	out := new(Opentext)
+	err := c.cc.Invoke(ctx, "/aveplen.auth.Authentication/Decrypt", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authenticationClient) Encrypt(ctx context.Context, in *Opentext, opts ...grpc.CallOption) (*Ciphertext, error) {
+	out := new(Ciphertext)
+	err := c.cc.Invoke(ctx, "/aveplen.auth.Authentication/Encrypt", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthenticationServer is the server API for Authentication service.
 // All implementations must embed UnimplementedAuthenticationServer
 // for forward compatibility
 type AuthenticationServer interface {
 	GetNextSynPackage(context.Context, *SynPackage) (*SynPackage, error)
+	Decrypt(context.Context, *Ciphertext) (*Opentext, error)
+	Encrypt(context.Context, *Opentext) (*Ciphertext, error)
 	mustEmbedUnimplementedAuthenticationServer()
 }
 
@@ -56,6 +78,12 @@ type UnimplementedAuthenticationServer struct {
 
 func (UnimplementedAuthenticationServer) GetNextSynPackage(context.Context, *SynPackage) (*SynPackage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetNextSynPackage not implemented")
+}
+func (UnimplementedAuthenticationServer) Decrypt(context.Context, *Ciphertext) (*Opentext, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Decrypt not implemented")
+}
+func (UnimplementedAuthenticationServer) Encrypt(context.Context, *Opentext) (*Ciphertext, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Encrypt not implemented")
 }
 func (UnimplementedAuthenticationServer) mustEmbedUnimplementedAuthenticationServer() {}
 
@@ -88,6 +116,42 @@ func _Authentication_GetNextSynPackage_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Authentication_Decrypt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Ciphertext)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthenticationServer).Decrypt(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/aveplen.auth.Authentication/Decrypt",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthenticationServer).Decrypt(ctx, req.(*Ciphertext))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Authentication_Encrypt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Opentext)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthenticationServer).Encrypt(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/aveplen.auth.Authentication/Encrypt",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthenticationServer).Encrypt(ctx, req.(*Opentext))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Authentication_ServiceDesc is the grpc.ServiceDesc for Authentication service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -98,6 +162,14 @@ var Authentication_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetNextSynPackage",
 			Handler:    _Authentication_GetNextSynPackage_Handler,
+		},
+		{
+			MethodName: "Decrypt",
+			Handler:    _Authentication_Decrypt_Handler,
+		},
+		{
+			MethodName: "Encrypt",
+			Handler:    _Authentication_Encrypt_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

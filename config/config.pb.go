@@ -21,7 +21,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ================================== facerec =================================
 type FacerecConfig struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
