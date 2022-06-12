@@ -7,7 +7,6 @@ option go_package = "github.com/aveplen-bach/config";
 
 service Config {
   rpc GetFacerecConfig(google.protobuf.Empty) returns (FacerecConfig) {}
-  rpc UpdateFacerecConfig(FacerecConfig) returns (google.protobuf.Empty) {}
 }
 
 message FacerecConfig {
