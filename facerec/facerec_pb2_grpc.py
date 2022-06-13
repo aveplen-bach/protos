@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import facerec_pb2 as facerec__pb2
+from . import facerec_pb2 as facerec__pb2
 
 
 class FaceRecognitionStub(object):
@@ -15,15 +15,15 @@ class FaceRecognitionStub(object):
             channel: A grpc.Channel.
         """
         self.ExtractFFVectorV1 = channel.unary_unary(
-                '/aveplen.facerec.FaceRecognition/ExtractFFVectorV1',
-                request_serializer=facerec__pb2.ExtractFFVectorV1Request.SerializeToString,
-                response_deserializer=facerec__pb2.ExtractFFVectorV1Response.FromString,
-                )
+            '/aveplen.facerec.FaceRecognition/ExtractFFVectorV1',
+            request_serializer=facerec__pb2.ExtractFFVectorV1Request.SerializeToString,
+            response_deserializer=facerec__pb2.ExtractFFVectorV1Response.FromString,
+        )
         self.FFVectorDistance = channel.unary_unary(
-                '/aveplen.facerec.FaceRecognition/FFVectorDistance',
-                request_serializer=facerec__pb2.FFVectorDistanceRequest.SerializeToString,
-                response_deserializer=facerec__pb2.FFVectorDistanceResponse.FromString,
-                )
+            '/aveplen.facerec.FaceRecognition/FFVectorDistance',
+            request_serializer=facerec__pb2.FFVectorDistanceRequest.SerializeToString,
+            response_deserializer=facerec__pb2.FFVectorDistanceResponse.FromString,
+        )
 
 
 class FaceRecognitionServicer(object):
@@ -44,56 +44,57 @@ class FaceRecognitionServicer(object):
 
 def add_FaceRecognitionServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'ExtractFFVectorV1': grpc.unary_unary_rpc_method_handler(
-                    servicer.ExtractFFVectorV1,
-                    request_deserializer=facerec__pb2.ExtractFFVectorV1Request.FromString,
-                    response_serializer=facerec__pb2.ExtractFFVectorV1Response.SerializeToString,
-            ),
-            'FFVectorDistance': grpc.unary_unary_rpc_method_handler(
-                    servicer.FFVectorDistance,
-                    request_deserializer=facerec__pb2.FFVectorDistanceRequest.FromString,
-                    response_serializer=facerec__pb2.FFVectorDistanceResponse.SerializeToString,
-            ),
+        'ExtractFFVectorV1': grpc.unary_unary_rpc_method_handler(
+            servicer.ExtractFFVectorV1,
+            request_deserializer=facerec__pb2.ExtractFFVectorV1Request.FromString,
+            response_serializer=facerec__pb2.ExtractFFVectorV1Response.SerializeToString,
+        ),
+        'FFVectorDistance': grpc.unary_unary_rpc_method_handler(
+            servicer.FFVectorDistance,
+            request_deserializer=facerec__pb2.FFVectorDistanceRequest.FromString,
+            response_serializer=facerec__pb2.FFVectorDistanceResponse.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'aveplen.facerec.FaceRecognition', rpc_method_handlers)
+        'aveplen.facerec.FaceRecognition', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
-
  # This class is part of an EXPERIMENTAL API.
+
+
 class FaceRecognition(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def ExtractFFVectorV1(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                          target,
+                          options=(),
+                          channel_credentials=None,
+                          call_credentials=None,
+                          insecure=False,
+                          compression=None,
+                          wait_for_ready=None,
+                          timeout=None,
+                          metadata=None):
         return grpc.experimental.unary_unary(request, target, '/aveplen.facerec.FaceRecognition/ExtractFFVectorV1',
-            facerec__pb2.ExtractFFVectorV1Request.SerializeToString,
-            facerec__pb2.ExtractFFVectorV1Response.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             facerec__pb2.ExtractFFVectorV1Request.SerializeToString,
+                                             facerec__pb2.ExtractFFVectorV1Response.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def FFVectorDistance(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                         target,
+                         options=(),
+                         channel_credentials=None,
+                         call_credentials=None,
+                         insecure=False,
+                         compression=None,
+                         wait_for_ready=None,
+                         timeout=None,
+                         metadata=None):
         return grpc.experimental.unary_unary(request, target, '/aveplen.facerec.FaceRecognition/FFVectorDistance',
-            facerec__pb2.FFVectorDistanceRequest.SerializeToString,
-            facerec__pb2.FFVectorDistanceResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             facerec__pb2.FFVectorDistanceRequest.SerializeToString,
+                                             facerec__pb2.FFVectorDistanceResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
